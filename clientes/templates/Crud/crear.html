@@ -1,6 +1,7 @@
 {% extends 'paginas_base/base.html' %}
 
-{% block titulo %} Nuevo Cliente {% endblock titulo %} Pagina de inicio
+
+{% block titulo %} Nuevo Cliente {% endblock titulo %} 
 
 {% block contenido %}
    <div class="card">
@@ -9,7 +10,20 @@
     </div>
     <div class="card-body">
         <h4 class="card-title">Nuevo Cliente</h4>
-        {% include 'Crud/form.html'%}
+        <form action="" method="post" enctype="multipart/form-data" autocomplete="off">
+            {%  csrf_token %}
+            {{ form}}
+
+            {% if form.foto.value %}
+            <img src="{{MEDIA_URL}}/images/{{form.foto.value}}" alt="" width="80">
+            {% endif %}
+           
+            <br>
+
+            <input name="btn-guardar" id="btn_guardar" class="btn btn-success" type="submit" value="Guardar">
+            <a name="btnCancelar" id="btnCancelar" class="btn btn-primary" href="{% url 'clientes_app:lista' %}" role="button">Cancelar</a>
+        </form>
+
     </div>
     <div class="card-footer text-muted">
         Footer

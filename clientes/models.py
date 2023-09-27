@@ -4,7 +4,7 @@ from django.db import models
 
 
 class Lenguaje(models.Model):
-    nom_len = models.CharField(max_length=100,verbose_name="Lenjuage")
+    nom_len = models.CharField(max_length=100,verbose_name="Lenguaje")
 
     def __str__(self):
         fila=self.nom_len
